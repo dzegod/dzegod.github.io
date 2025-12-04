@@ -1,0 +1,351 @@
+/* -------------------- BAZINIAI KINTAMIEJI -------------------- */
+:root {
+  --default-font: "Poppins", "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --heading-font: "Georgia", "Times New Roman", Times, serif;
+  --nav-font: "Poppins", "Roboto", sans-serif;
+
+  /* Akcentai ir nuorodų spalvos */
+  --custom-accent: #e67e22;         /* šiltas oranžinis – mygtukams ir akcentams */
+  --custom-accent-dark: #9b3f00;    /* tamsesnis oranžinis – hover/active */
+  --custom-accent-contrast: #ffffff;/* tekstas ant oranžinio fono */
+  --custom-link-color: #a0261e;     /* nuorodų spalva – geras kontrastas */
+  --custom-link-hover: #7f1e18;     /* nuorodų hover spalva */
+
+  /* Bazinis fonas ir tekstas – kontrastui */
+  --page-bg: #f5f5f5;
+  --page-text: #111111;
+}
+
+/* Bazinis kūno šriftas ir kontrastas */
+body {
+  font-family: var(--default-font);
+  background: var(--page-bg);
+  color: var(--page-text);
+}
+
+/* -------------------- ANTRAŠTĖS -------------------- */
+/* Headings: distinct sizes, colors, weights, spacing per level */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.6rem;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.25px;
+  margin-bottom: 0.55rem;
+  color: color-mix(in srgb, var(--heading-color), transparent 8%);
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0px;
+  margin-bottom: 0.5rem;
+  color: color-mix(in srgb, var(--heading-color), transparent 18%);
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+  margin-bottom: 0.45rem;
+  color: color-mix(in srgb, var(--heading-color), transparent 30%);
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.4rem;
+  color: color-mix(in srgb, var(--heading-color), transparent 40%);
+}
+
+h6 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--heading-color), transparent 50%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 15px; }
+  h6 { font-size: 13px; }
+}
+
+/* ------------------------------------------------------------------
+   Custom component styles (buttons & links)
+   ------------------------------------------------------------------ */
+
+/* Buttons: apply to bootstrap .btn and native <button>/<input> elements */
+.btn,
+button,
+input[type="button"],
+input[type="submit"] {
+  background: linear-gradient(180deg,var(--custom-accent), var(--custom-accent-dark));
+  color: var(--custom-accent-contrast) !important;
+  border: 1px solid color-mix(in srgb, var(--custom-accent-dark), black 6%);
+  padding: 0.55rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--custom-accent), transparent 75%);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.btn:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--custom-accent-dark), transparent 70%);
+}
+
+.btn:active,
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+  transform: translateY(0px) scale(0.995);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--custom-accent-dark), transparent 80%);
+}
+
+.btn:focus,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus {
+  outline: 3px solid color-mix(in srgb, var(--custom-accent), white 85%);
+  outline-offset: 3px;
+}
+
+/* Link styles to visually differ from template */
+a {
+  color: var(--custom-link-color);
+  text-decoration: underline dashed 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease, transform 0.12s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--custom-link-hover);
+  text-decoration-style: solid;
+  transform: translateY(-1px);
+}
+
+/* Muted variant for secondary buttons/links */
+.btn.btn-outline-custom {
+  background: transparent;
+  color: var(--custom-accent);
+  border: 1px dashed var(--custom-accent);
+  box-shadow: none;
+}
+
+.btn.btn-outline-custom:hover {
+  background: color-mix(in srgb, var(--custom-accent), white 92%);
+  color: var(--custom-accent-dark);
+}
+
+/* ---------------------------------------------------------------
+   Section layout improvements (About, Resume, Portfolio)
+   --------------------------------------------------------------- */
+
+/* Didesni vertikalūs tarpai */
+#about.section,
+#resume.section,
+#portfolio.section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Kortelės tipo fonas sekcijų viduje */
+#about .container,
+#resume .container,
+#portfolio .container {
+  background: var(--surface-color);
+  border-radius: 14px;
+  padding: 36px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+}
+
+/* Sekcijų pavadinimams – daugiau erdvės */
+#about .section-title,
+#resume .section-title,
+#portfolio .section-title {
+  padding-bottom: 18px;
+}
+
+/* Kolonų tarpai viduje */
+#about .row > [class*="col-"],
+#resume .row > [class*="col-"],
+#portfolio .row > [class*="col-"] {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* Smulkesnės kortelės blokams */
+.section .card-like {
+  background: var(--surface-color);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 94%);
+  margin-bottom: 18px;
+}
+
+/* Kortelių antraštės – aiškus kontrastas */
+.section .card-like h3,
+.section .card-like h4 {
+  color: var(--heading-color);
+}
+
+@media (max-width: 768px) {
+  #about .container,
+  #resume .container,
+  #portfolio .container {
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+/* ===============================================================
+   ANIMACIJOS + PREFERS-REDUCED-MOTION + PRELOADERIS (LD10)
+   =============================================================== */
+
+/* -------------------- 1) Sekcijų "fade-in" animacija -------------------- */
+@keyframes fadeInSection {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Taikoma visoms sekcijoms su klase .section (hero, about, resume, portfolio, ...) */
+.section {
+  opacity: 0;
+  animation: fadeInSection 0.9s ease-out forwards;
+}
+
+/* Vartotojams su judesio jautrumu – animaciją išjungiame */
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* -------------------- 2) Social ikonų "plaukiojimo" animacija -------------------- */
+@keyframes socialIconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Social links – apačioje header'yje (`<div class="social-links text-center">`) */
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 8px;
+  margin-right: 6px;
+  background: color-mix(in srgb, var(--custom-accent), transparent 88%);
+  animation: socialIconFloat 1.8s ease-in-out infinite;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  background: color-mix(in srgb, var(--custom-accent), white 75%);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--custom-accent-dark), transparent 80%);
+}
+
+/* Judesio jautriems – be animacijos */
+@media (prefers-reduced-motion: reduce) {
+  .social-links a {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* -------------------- 3) CSS Page Pre-loader (sukantis apskritimas) -------------------- */
+/* HTML puslapio apačioje:
+   <div id="preloader">
+     <span class="page-preloader-spinner"></span>
+   </div>
+   Šablono main.js jau turi logiką, kuri paslėps #preloader po užkrovimo.
+*/
+
+#preloader {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: radial-gradient(circle at top, #111827, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.page-preloader-spinner {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 5px solid rgba(148, 163, 184, 0.6); /* pilkas žiedas */
+  border-top-color: var(--custom-accent);      /* oranžinis segmentas */
+  animation: preloaderSpin 0.85s linear infinite;
+}
+
+/* Sukimosi animacija */
+@keyframes preloaderSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Reduced motion režime – statinis apskritimas, be sukimosi */
+@media (prefers-reduced-motion: reduce) {
+  .page-preloader-spinner {
+    animation: none;
+    border-top-color: rgba(148, 163, 184, 0.9);
+  }
+}
+
+/* -------------------- 4) Sklandus scroll tik jei leidžia vartotojas -------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
