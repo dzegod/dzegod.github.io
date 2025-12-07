@@ -349,3 +349,51 @@ html {
     scroll-behavior: auto;
   }
 }
+
+/* ===================== KONTAKTŲ FORMOS KLAIDOS + POPUP ===================== */
+
+.form-control.error {
+  border: 1px solid #e63946;
+  box-shadow: 0 0 0 1px rgba(230, 57, 70, 0.25);
+}
+
+.error-message {
+  color: #e63946;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+/* Pop-up sluoksnis */
+.success-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.success-popup.show {
+  display: flex;
+}
+
+.success-popup-inner {
+  background: #ffffff;
+  padding: 20px 26px;
+  border-radius: 14px;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+}
+
+.success-popup-inner p {
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.success-popup-inner button {
+  margin-top: 4px;
+}
+
