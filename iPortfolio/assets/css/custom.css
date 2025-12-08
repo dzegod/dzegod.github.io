@@ -232,7 +232,7 @@ a:focus {
 }
 
 /* ===============================================================
-   ANIMACIJOS + PREFERS-REDUCED-MOTION + PRELOADERIS (LD10)
+   ANIMACIJOS + PREFERS-REDUCED-MOTION + PRELOADERIS
    =============================================================== */
 
 /* -------------------- 1) Sekcijų "fade-in" animacija -------------------- */
@@ -247,13 +247,12 @@ a:focus {
   }
 }
 
-/* Taikoma visoms sekcijoms su klase .section (hero, about, resume, portfolio, ...) */
 .section {
   opacity: 0;
   animation: fadeInSection 0.9s ease-out forwards;
 }
 
-/* Vartotojams su judesio jautrumu – animaciją išjungiame */
+
 @media (prefers-reduced-motion: reduce) {
   .section {
     animation: none;
@@ -395,5 +394,154 @@ html {
 
 .success-popup-inner button {
   margin-top: 4px;
+}
+
+.game-section {
+    padding: 40px 20px;
+    margin-bottom: 80px;
+}
+
+
+.game-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+
+.card {
+    width: 90px;
+    height: 90px;
+    background: #0a84ff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.card.flipped {
+    background: #fff;
+    color: #000;
+}
+
+.card.matched {
+    background: #69d46f;
+    cursor: default;
+}
+
+.win-message {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: green;
+}
+
+.animated-shapes {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.5;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 170, 255, 0.6);
+  top: 20px;
+  left: 40px;
+  animation-name: float, rotate;
+}
+
+.square {
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 120, 0, 0.6);
+  top: 120px;
+  right: 50px;
+  animation-name: float2, scale;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-bottom: 80px solid rgba(255, 0, 150, 0.6);
+  left: 50%;
+  top: 40px;
+  animation-name: rotate, float3;
+}
+
+@keyframes rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes scale {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.4); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-30px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(25px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(35px); }
+}
+
+/* ================================
+   ANIMUOTAS GRADIENTO FONAS SERVICES SEKCIAI
+   ================================ */
+
+#services {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+      #0f172a,
+      #1e293b,
+      #0ea5e9,
+      #3b82f6,
+      #1e3a8a);
+  background-size: 400% 400%;
+  animation: animatedGradient 12s ease infinite;
+  border-radius: 12px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+@keyframes animatedGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 

@@ -260,3 +260,107 @@ document.addEventListener('DOMContentLoaded', function () {
   // pradinė būsena
   validateFormAndToggleSubmit();
 });
+
+const board = document.getElementById("game-board");
+const movesEl = document.getElementById("moves");
+const matchesEl = document.getElementById("matches");
+const winMessage = document.getElementById("win-message");
+const difficultySelect = document.getElementById("difficulty");
+
+let moves = 0;
+let matches = 0;
+let flippedCards = [];
+let cardValues = [];
+
+// 6 unikalūs elementai — automatiškai dubliuojami
+const baseItems = ["🍎", "🍌", "🍇", "🍓", "🍒", "🍍"];
+
+function startGame() {
+    moves = 0;
+    matches = 0;
+    flippedCards = [];
+    winMessage.textContent = "";
+
+    movesEl.textContent = 0;
+    matchesEl.textContent = 0;
+
+    generateBoard();
+}
+
+function generateBoard() {
+    board.innerHTML = "";
+
+    let gridSize = difficultySelect.value === "easy" ? 12 : 24;
+    let neededPairs = gridSize / 2;
+
+    // paimame tiek elementų kiek reikia
+    let selectedItems = baseItems.slice(0, neededPairs);
+
+    // dubliuojame masyvą, kad būtų poros
+    cardValues = [...selectedItems, ...selectedItems];
+
+    // sumaišome
+    cardValues.sort(() => Math.random() - 0.5);
+
+    // nustatome grid dydį
+    board.style.gridTemplateColumns =
+        difficultySelect.value === "easy" ? "repeat(4, 1fr)" : "repeat(6, 1fr)";
+
+    // sugeneruojame korteles
+    cardValues.forEach((value, index) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.index = index;
+        card.dataset.value = value;
+
+        card.addEventListener("click", () => flipCard(card));
+
+        board.appendChild(card);
+    });
+}
+
+function flipCard(card) {
+    if (card.classList.contains("flipped") || card.classList.contains("matched"))
+        return;
+
+    if (flippedCards.length === 2) return;
+
+    card.classList.add("flipped");
+    card.textContent = card.dataset.value;
+    flippedCards.push(card);
+
+    if (flippedCards.length === 2) {
+        moves++;
+        movesEl.textContent = moves;
+
+        setTimeout(checkMatch, 700);
+    }
+}
+
+function checkMatch() {
+    const [c1, c2] = flippedCards;
+
+    if (c1.dataset.value === c2.dataset.value) {
+        c1.classList.add("matched");
+        c2.classList.add("matched");
+        matches++;
+        matchesEl.textContent = matches;
+    } else {
+        c1.classList.remove("flipped");
+        c2.classList.remove("flipped");
+        c1.textContent = "";
+        c2.textContent = "";
+    }
+
+    flippedCards = [];
+
+    if (matches === cardValues.length / 2) {
+        winMessage.textContent = "🎉 Laimėjote!";
+    }
+}
+
+document.getElementById("start-btn").addEventListener("click", startGame);
+document.getElementById("reset-btn").addEventListener("click", startGame);
+
+// automatinis užkrovimas pirmą kartą
+startGame();

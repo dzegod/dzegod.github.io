@@ -109,6 +109,12 @@
 
         <!-- About Section -->
         <section id="about" class="about section">
+        <div class="animated-shapes">
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape square"></div>
+      </div>
+
 
           <!-- Section Title -->
           <div class="container section-title" data-aos="fade-up">
@@ -656,6 +662,7 @@
     <!-- Services Section -->
     <section id="services" class="services section">
 
+
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Services</h2>
@@ -977,6 +984,30 @@
 
     </section><!-- /Contact Section -->
 
+<section id="game-section" class="game-section">
+    <h2>Mano Žaidimas</h2>
+
+    <div class="game-controls">
+        <label for="difficulty">Sudėtingumas:</label>
+        <select id="difficulty">
+            <option value="easy">Lengvas (4x3)</option>
+            <option value="hard">Sunkus (6x4)</option>
+        </select>
+
+        <button id="start-btn">Start</button>
+        <button id="reset-btn">Atnaujinti</button>
+    </div>
+
+    <div class="stats">
+        <p>Ėjimai: <span id="moves">0</span></p>
+        <p>Sutapusios poros: <span id="matches">0</span></p>
+    </div>
+
+    <div id="game-board" class="game-board"></div>
+
+    <p id="win-message" class="win-message"></p>
+</section>
+
 
   </main>
 
@@ -1002,7 +1033,6 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader (LD10: CSS sukamas apskritimas) -->
   <div id="preloader">
     <span class="page-preloader-spinner"></span>
   </div>
@@ -1023,6 +1053,8 @@
   
   <!-- Custom JS -->
   <script src="assets/js/custom.js"></script>
+
+
 
 </body>
 
