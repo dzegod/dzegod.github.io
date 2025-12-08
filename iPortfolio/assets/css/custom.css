@@ -523,25 +523,45 @@ html {
    ANIMUOTAS GRADIENTO FONAS SERVICES SEKCIAI
    ================================ */
 
+/* ================================
+   LABAI ŠVELNUS ANIMUOTAS GRADIENTAS SERVICES SEKCIAI
+   ================================ */
+
 #services {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg,
-      #0f172a,
-      #1e293b,
-      #0ea5e9,
-      #3b82f6,
-      #1e3a8a);
-  background-size: 400% 400%;
-  animation: animatedGradient 12s ease infinite;
+  background: linear-gradient(
+      135deg,
+      #0f172a,   /* tamsiai mėlyna */
+      #1e293b,   /* grafitas */
+      #334155,   /* pilkai mėlyna */
+      #1e293b,   /* grįžta į grafitą */
+      #0f172a
+  );
+  background-size: 200% 200%;
+  animation: calmGradient 25s ease-in-out infinite; /* lėtas, subtilus */
   border-radius: 12px;
   padding-top: 60px;
   padding-bottom: 60px;
 }
 
-@keyframes animatedGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+@keyframes calmGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+#services,
+#services h2,
+#services p,
+#services h4,
+#services .description,
+#services .title a {
+    color: #f0f4f8 !important;
+}
+
+#services .title a:hover {
+    color: #ffffff !important;
+}
+
 
